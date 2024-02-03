@@ -18,7 +18,22 @@ GLFWwindow* Windows;
 
 
 //提前调用函数声明
+// ===============================================基础命令===============================================
+#pragma region 基础命令
 static void ShowBasicCommands();
+static void ShowGive();
+static void ShowSetBlock();
+static void ShowSummon();
+static void ShowReplaceitem();
+static void ShowScoreboard();
+static void ShowTeam();
+static void ShowParticle();
+static void ShowExecute();
+static void ShowSpreadplayers();
+static void ShowWorldborder();
+static void ShowBossBar();
+#pragma endregion
+
 
 int main()
 {
@@ -42,6 +57,7 @@ int main()
 	ImGui::StyleColorsDark();
 	ImGuiStyle& style = ImGui::GetStyle();
 
+#pragma region Styles
 	ImVec4* colors = style.Colors;
 	colors[ImGuiCol_FrameBg] = ImVec4(0.16f, 0.16f, 0.17f, 1.00f);
 	colors[ImGuiCol_FrameBgHovered] = ImVec4(0.37f, 0.36f, 0.36f, 102.00f);
@@ -70,13 +86,13 @@ int main()
 	colors[ImGuiCol_NavHighlight] = ImVec4(1.00f, 0.40f, 0.13f, 1.00f);
 	colors[ImGuiCol_TextSelectedBg] = ImVec4(0.45f, 1.00f, 0.85f, 0.35f);
 
-
 	style.WindowRounding = 4;
 	style.FrameRounding = 4;
 	style.GrabRounding = 3;
 	style.ScrollbarSize = 7;
 	style.ScrollbarRounding = 0;
 
+#pragma endregion
 
 	ImGui_ImplGlfw_InitForOpenGL(Windows, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
@@ -85,6 +101,7 @@ int main()
 	te->SetLanguageDefinition(TextEditor::LanguageDefinition::C());*/
 	
 	// 窗口是否显示布尔判断
+#pragma region WindowBool
 	static bool show_basic_commands = false;
 	static bool show_give = false;
 	static bool show_setblock = false;
@@ -97,7 +114,7 @@ int main()
 	static bool show_spreadplayers = false;
 	static bool show_worldborder = false;
 	static bool show_bossbar = false;
-
+#pragma endregion
 
 	while (!glfwWindowShouldClose(Windows))
 	{
@@ -172,17 +189,17 @@ int main()
 		// 判断窗口显示逻辑
 		// ===============================================基础命令===============================================
 		if (show_basic_commands) { ShowBasicCommands(); }
-		if (show_give) { ShowBasicCommands(); }
-		if (show_setblock) { ShowBasicCommands(); }
-		if (show_summon) { ShowBasicCommands(); }
-		if (show_replaceitem) { ShowBasicCommands(); }
-		if (show_scoreboard) { ShowBasicCommands(); }
-		if (show_team) { ShowBasicCommands(); }
-		if (show_particle) { ShowBasicCommands(); }
-		if (show_execute) { ShowBasicCommands(); }
-		if (show_spreadplayers) { ShowBasicCommands(); }
-		if (show_worldborder) { ShowBasicCommands(); }
-		if (show_bossbar) { ShowBasicCommands(); }
+		if (show_give) { ShowGive(); }
+		if (show_setblock) { ShowSetBlock(); }
+		if (show_summon) { ShowSummon(); }
+		if (show_replaceitem) { ShowReplaceitem(); }
+		if (show_scoreboard) { ShowScoreboard(); }
+		if (show_team) { ShowTeam(); }
+		if (show_particle) { ShowParticle(); }
+		if (show_execute) { ShowExecute(); }
+		if (show_spreadplayers) { ShowSpreadplayers(); }
+		if (show_worldborder) { ShowWorldborder(); }
+		if (show_bossbar) { ShowBossBar(); }
 
 
 
@@ -204,8 +221,82 @@ int main()
 	}
 }
 
+// ===============================================基础命令===============================================
+#pragma region 基础命令
+
+
+
 // 基础命令窗口
 static void ShowBasicCommands() {
 	ImGui::Begin(u8"基础命令");
 	ImGui::End();
 }
+
+// 物品给予
+static void ShowGive() {
+	ImGui::Begin(u8"物品给予");
+	ImGui::End();
+}
+
+
+// 方块放置
+static void ShowSetBlock() {
+	ImGui::Begin(u8"方块放置");
+	ImGui::End();
+}
+
+// 实体召唤
+static void ShowSummon() {
+	ImGui::Begin(u8"实体召唤");
+	ImGui::End();
+}
+
+// 替换物品/方块
+static void ShowReplaceitem() {
+	ImGui::Begin(u8"替换物品/方块");
+	ImGui::End();
+}
+
+// 计分板
+static void ShowScoreboard() {
+	ImGui::Begin(u8"计分板");
+	ImGui::End();
+}
+
+// 队伍
+static void ShowTeam() {
+	ImGui::Begin(u8"队伍");
+	ImGui::End();
+}
+
+// 粒子效果
+static void ShowParticle() {
+	ImGui::Begin(u8"粒子效果");
+	ImGui::End();
+}
+
+// 实体执行
+static void ShowExecute() {
+	ImGui::Begin(u8"实体执行");
+	ImGui::End();
+}
+
+// 实体扩散
+static void ShowSpreadplayers() {
+	ImGui::Begin(u8"实体扩散");
+	ImGui::End();
+}
+
+// 世界边界
+static void ShowWorldborder() {
+	ImGui::Begin(u8"世界边界");
+	ImGui::End();
+}
+
+// BOOS栏
+static void ShowBossBar() {
+	ImGui::Begin(u8"BOOS栏");
+	ImGui::End();
+}
+
+#pragma endregion
