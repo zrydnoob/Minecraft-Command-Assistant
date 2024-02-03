@@ -1,5 +1,6 @@
 
 #define GLEW_STATIC
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #pragma comment(lib,"../API/GLFW/glfw3.lib")
@@ -7,6 +8,9 @@
 #pragma comment(lib,"Opengl32.lib")
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <cstring>
+#include <clipboardxx.hpp>
 
 
 #include "imgui.h"
@@ -32,11 +36,19 @@ static void ShowExecute();
 static void ShowSpreadplayers();
 static void ShowWorldborder();
 static void ShowBossBar();
+// ===============================================控价===============================================
+static void PlayerChoose(const char* label, char* player);
 #pragma endregion
+
+
+static char command[1024*16];
 
 
 int main()
 {
+	clipboardxx::clipboard clipboard;
+
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -52,6 +64,8 @@ int main()
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.Fonts->AddFontFromFileTTF("tgt.ttf", 18, NULL, io.Fonts->GetGlyphRangesChineseFull());
 
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 	
 
 	ImGui::StyleColorsDark();
@@ -186,6 +200,21 @@ int main()
 
 		ImGui::End();
 
+		ImGui::Begin(u8"命令行窗口");
+		ImGui::Text(u8"命令输出窗口");
+		ImGui::InputTextMultiline("##command", command,16384, ImVec2(-FLT_MIN, ImGui::GetTextLineHeight() * 6));
+		if (ImGui::Button(u8"复制"))
+		{
+			clipboard << command;
+		}
+		ImGui::SameLine();
+		if (ImGui::Button(u8"清空"))
+		{
+			strcpy_s(command, "");
+		}	
+
+		ImGui::End();
+
 		// 判断窗口显示逻辑
 		// ===============================================基础命令===============================================
 		if (show_basic_commands) { ShowBasicCommands(); }
@@ -223,12 +252,64 @@ int main()
 
 // ===============================================基础命令===============================================
 #pragma region 基础命令
-
-
-
 // 基础命令窗口
 static void ShowBasicCommands() {
 	ImGui::Begin(u8"基础命令");
+	ImGui::Text(u8"地图");
+	if (ImGui::CollapsingHeader(u8"游戏模式")) {
+		static int gamemode = 0;
+		ImGui::RadioButton(u8"生存模式", &gamemode, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"创造模式", &gamemode, 1); ImGui::SameLine();
+		ImGui::RadioButton(u8"冒险模式", &gamemode, 2); ImGui::SameLine();
+		ImGui::RadioButton(u8"旁观模式", &gamemode, 3); 
+		static char player[128] = ""; PlayerChoose(u8"玩家选择器",player);
+		if (ImGui::Button(u8"生成命令")) {
+			std::string gamemodeCommand;
+			std::ostringstream buffer;
+			switch (gamemode)
+			{
+			case 0:
+				gamemodeCommand = "survival";
+				break;
+			case 1:
+				gamemodeCommand = "creative";
+				break;
+			case 2:
+				gamemodeCommand = "adventure";
+				break;
+			case 3:
+				gamemodeCommand = "spectator";
+				break;
+			} 
+			buffer << "/gamemode " << player << " " << gamemodeCommand;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+	if (ImGui::CollapsingHeader(u8"规则")) {
+
+	}
+	if (ImGui::CollapsingHeader(u8"难度")) {
+
+	}
+	if (ImGui::CollapsingHeader(u8"出生点")) {
+
+	}
+	ImGui::Separator();
+	ImGui::Text(u8"玩家");
+	if (ImGui::CollapsingHeader(u8"传送")) {
+
+	}
+	if (ImGui::CollapsingHeader(u8"等级")) {
+
+	}
+	ImGui::Separator();
+	ImGui::Text(u8"游戏");
+	if (ImGui::CollapsingHeader(u8"时间")) {
+
+	}
+	if (ImGui::CollapsingHeader(u8"天气")) {
+
+	}
 	ImGui::End();
 }
 
@@ -300,3 +381,17 @@ static void ShowBossBar() {
 }
 
 #pragma endregion
+
+
+static void PlayerChoose(const char* label,char* player) {
+	ImGui::InputText(label, player, ((int)(sizeof(player) / sizeof(*(player))))); ImGui::SameLine();
+	ImGui::TextDisabled("(?)");
+	if (ImGui::IsItemHovered())
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted(u8"玩家选择器:\n@a 所有玩家\n@s 命令执行者\n@p 最近的玩家\n@e 全部实体\n@r 随机玩家\n@p[c=-1] 距离最远的玩家");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+}
