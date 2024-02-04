@@ -54,6 +54,39 @@
     <ClInclude Include="opengl_imgui\include\MinHook.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux\xcb\xcb.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux\xcb\xcb_event.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux\provider.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux\x11_event_handler.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux\x11_provider.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\exception.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\interface.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\linux.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\detail\windows.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\include\clipboardxx.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipboardXX\test\utils.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

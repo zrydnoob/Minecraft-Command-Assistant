@@ -1,1 +1,2 @@
 F:\work\c++\Minecraft_Gui\x64\Debug\Minecraft_Gui.dll
+F:\work\c++\Minecraft-Command-Assistant\x64\Debug\Minecraft_Gui.dll
