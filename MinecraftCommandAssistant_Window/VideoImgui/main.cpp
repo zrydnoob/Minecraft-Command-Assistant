@@ -1,4 +1,4 @@
-
+﻿
 #define GLEW_STATIC
 
 #include <GL/glew.h>
@@ -21,9 +21,9 @@
 GLFWwindow* Windows;
 
 
-//��ǰ���ú�������
-// ===============================================��������===============================================
-#pragma region ��������
+//提前调用函数声明
+// ===============================================基础命令===============================================
+#pragma region 基础命令
 static void ShowBasicCommands();
 static void ShowGive();
 static void ShowSetBlock();
@@ -36,8 +36,9 @@ static void ShowExecute();
 static void ShowSpreadplayers();
 static void ShowWorldborder();
 static void ShowBossBar();
-// ===============================================�ؼ�===============================================
+// ===============================================控件===============================================
 static void PlayerChoose(const char* label, char* player);
+static void HelpMarker(const char* desc);
 #pragma endregion
 
 
@@ -114,7 +115,7 @@ int main()
 	/*te = new TextEditor();
 	te->SetLanguageDefinition(TextEditor::LanguageDefinition::C());*/
 	
-	// �����Ƿ���ʾ�����ж�
+	// 窗口是否显示布尔判断
 #pragma region WindowBool
 	static bool show_basic_commands = false;
 	static bool show_give = false;
@@ -143,80 +144,80 @@ int main()
 
 		ImGui::ShowDemoWindow();
 
-		ImGui::Begin(u8"�ҵ����硪��ע��ʽ����������");
-		ImGui::Text(u8"֧����Ϸ�汾:1.14.4+");
+		ImGui::Begin(u8"我的世界——注入式命令生成器");
+		ImGui::Text(u8"支持游戏版本:1.14.4+");
 
-		if (ImGui::CollapsingHeader(u8"��������")) {
+		if (ImGui::CollapsingHeader(u8"基础功能")) {
 			if (ImGui::BeginTable("chickboxTable1",3))
 			{
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"��������", &show_basic_commands);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"��Ʒ����", &show_give);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"�������", &show_setblock);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"ʵ���ٻ�", &show_summon);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"�滻��Ʒ/����", &show_replaceitem);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"�Ʒְ�", &show_scoreboard);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"����", &show_team);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"����Ч��", &show_particle);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"ʵ��ִ��", &show_execute);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"ʵ����ɢ", &show_spreadplayers);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"����߽�", &show_worldborder);
-				ImGui::TableNextColumn(); ImGui::Checkbox(u8"BOOS��", &show_bossbar);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"基础命令", &show_basic_commands);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"物品给予", &show_give);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"方块放置", &show_setblock);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"实体召唤", &show_summon);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"替换物品/方块", &show_replaceitem);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"计分板", &show_scoreboard);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"队伍", &show_team);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"粒子效果", &show_particle);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"实体执行", &show_execute);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"实体扩散", &show_spreadplayers);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"世界边界", &show_worldborder);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"BOOS栏", &show_bossbar);
 				ImGui::EndTable();
 			}
 		}
 
-		if (ImGui::CollapsingHeader(u8"JSON���")) {
+		if (ImGui::CollapsingHeader(u8"JSON相关")) {
 
 		}
 
 		ImGui::Separator();
 
-		if (ImGui::CollapsingHeader(u8"����NBT��Ʒ/����")) {
+		if (ImGui::CollapsingHeader(u8"特殊NBT物品/方块")) {
 
 		}
 
-		if (ImGui::CollapsingHeader(u8"������Ʒ/����")) {
-
-		}
-
-		ImGui::Separator();
-
-		if (ImGui::CollapsingHeader(u8"����NBTʵ��")) {
-
-		}
-
-		if (ImGui::CollapsingHeader(u8"����ʵ��")) {
+		if (ImGui::CollapsingHeader(u8"复合物品/方块")) {
 
 		}
 
 		ImGui::Separator();
 
-		if (ImGui::CollapsingHeader(u8"�����Ϣ")) {
-			ImGui::Text(u8"�йش���Ŀ:");
-			ImGui::BulletText(u8"����Ŀ��zrydnoob����");
-			ImGui::BulletText(u8"����Ŀʹ��ImGui��������ͨ��dllע��ֱ������Ϸ������");
-			ImGui::BulletText(u8"�������� 2024/2/2��ʼ");
+		if (ImGui::CollapsingHeader(u8"特殊NBT实体")) {
+
+		}
+
+		if (ImGui::CollapsingHeader(u8"复合实体")) {
+
+		}
+
+		ImGui::Separator();
+
+		if (ImGui::CollapsingHeader(u8"相关信息")) {
+			ImGui::Text(u8"有关此项目:");
+			ImGui::BulletText(u8"本项目由zrydnoob开发");
+			ImGui::BulletText(u8"本项目使用ImGui开发，并通过dll注入直接在游戏中运行");
+			ImGui::BulletText(u8"开发日期 2024/2/2开始");
 		}
 
 		ImGui::End();
 
-		ImGui::Begin(u8"�����д���");
-		ImGui::Text(u8"�����������");
+		ImGui::Begin(u8"命令行窗口");
+		ImGui::Text(u8"命令输出窗口");
 		ImGui::InputTextMultiline("##command", command,16384, ImVec2(-FLT_MIN, ImGui::GetTextLineHeight() * 6));
-		if (ImGui::Button(u8"����"))
+		if (ImGui::Button(u8"复制"))
 		{
 			clipboard << command;
 		}
 		ImGui::SameLine();
-		if (ImGui::Button(u8"���"))
+		if (ImGui::Button(u8"清空"))
 		{
 			strcpy_s(command, "");
 		}	
 
 		ImGui::End();
 
-		// �жϴ�����ʾ�߼�
-		// ===============================================��������===============================================
+		// 判断窗口显示逻辑
+		// ===============================================基础命令===============================================
 		if (show_basic_commands) { ShowBasicCommands(); }
 		if (show_give) { ShowGive(); }
 		if (show_setblock) { ShowSetBlock(); }
@@ -250,20 +251,20 @@ int main()
 	}
 }
 
-// ===============================================��������===============================================
-#pragma region ��������
-// ���������
+// ===============================================基础命令===============================================
+#pragma region 基础命令
+// 基础命令窗口
 static void ShowBasicCommands() {
-	ImGui::Begin(u8"��������");
-	ImGui::Text(u8"��ͼ");
-	if (ImGui::CollapsingHeader(u8"��Ϸģʽ")) {
+	ImGui::Begin(u8"基础命令");
+	ImGui::Text(u8"地图");
+	if (ImGui::CollapsingHeader(u8"游戏模式")) {
 		static int gamemode = 0;
-		ImGui::RadioButton(u8"����ģʽ", &gamemode, 0); ImGui::SameLine();
-		ImGui::RadioButton(u8"����ģʽ", &gamemode, 1); ImGui::SameLine();
-		ImGui::RadioButton(u8"ð��ģʽ", &gamemode, 2); ImGui::SameLine();
-		ImGui::RadioButton(u8"�Թ�ģʽ", &gamemode, 3); 
-		static char player[128] = ""; PlayerChoose(u8"���ѡ����",player);
-		if (ImGui::Button(u8"��������")) {
+		ImGui::RadioButton(u8"生存模式", &gamemode, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"创造模式", &gamemode, 1); ImGui::SameLine();
+		ImGui::RadioButton(u8"冒险模式", &gamemode, 2); ImGui::SameLine();
+		ImGui::RadioButton(u8"旁观模式", &gamemode, 3); 
+		static char player[128] = ""; PlayerChoose(u8"玩家选择器",player);
+		if (ImGui::Button(u8"生成命令")) {
 			std::string gamemodeCommand;
 			std::ostringstream buffer;
 			switch (gamemode)
@@ -285,98 +286,165 @@ static void ShowBasicCommands() {
 			strcpy_s(command, buffer.str().data());
 		}
 	}
-	if (ImGui::CollapsingHeader(u8"����")) {
+	if (ImGui::CollapsingHeader(u8"规则(仅支持bool类型规则)")) {
+		static int is_enable = 0;
+		ImGui::RadioButton(u8"禁用", &is_enable, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"启用", &is_enable, 1); 
+		const char* gamerules[] = { "announceAdvancements", "blockExplosionDropDecay", "commandBlockOutput",
+			"disableElytraMovementCheck", "disableRaids", "doDaylightCycle", "doEntityDrops", 
+			"doFireTick", "doImmediateRespawn","doInsomnia","doLimitedCrafting","doMobLoot","doMobSpawning","doPatrolSpawning","doTileDrops",
+			"doTraderSpawning","doVinesSpread","doWardenSpawning","doWeatherCycle","drowningDamage","enderPearlsVanishOnDeath",
+			"fallDamage","fireDamage","forgiveDeadPlayers","freezeDamage","globalSoundEvents","keepInventory",
+			"lavaSourceConversion","logAdminCommands","mobExplosionDropDecay","mobGriefing",
+			"naturalRegeneration","projectilesCanBreakBlocks","reducedDebugInfo","sendCommandFeedback",
+			"showDeathMessages","showTags","spectatorsGenerateChunks","tntExplosionDropDecay",
+			"universalAnger","waterSourceConversion"};
+		static int gamerulevaluse = 0;
+		ImGui::Combo(u8"游戏规则", &gamerulevaluse, gamerules, IM_ARRAYSIZE(gamerules)); ImGui::SameLine();
+		HelpMarker(u8"announceAdvancements	是否在聊天框中公告玩家进度的达成\
+			\nblockExplosionDropDecay	由方块源（除TNT）爆炸炸毁的方块是否会有概率不掉落\
+			\ncommandBlockOutput	命令方块执行命令时是否在聊天框中向管理员显示\
+			\ndisableElytraMovementCheck	是否让服务器停止检查使用鞘翅玩家的移动速度\
+			\ndisableRaids	是否禁用袭击\
+			\ndoDaylightCycle	是否进行昼夜更替和月相变化\
+			\ndoEntityDrops	非生物实体是否掉落物品\
+			\ndoFireTick	火是否蔓延及自然熄灭\
+			\ndoImmediateRespawn	玩家死亡时是否不显示死亡界面直接重生\
+			\ndoInsomnia	幻翼是否在夜晚生成\
+			\ndoLimitedCrafting	玩家的合成配方是否需要解锁才能使用\
+			\ndoMobLoot	生物在死亡时是否掉落物品\
+			\ndoMobSpawning	生物是否自然生成。不影响刷怪笼\
+			\ndoPatrolSpawning	控制灾厄巡逻队的生成\
+			\ndoTileDrops	方块被破坏时是否掉落物品\
+			\ndoTraderSpawning	控制流浪商人的生成\
+			\ndoVinesSpread	决定藤蔓是否会向周围扩散，不影响洞穴藤蔓、缠怨藤和垂泪藤\
+			\ndoWardenSpawning	监守者是否生成\
+			\ndoWeatherCycle	天气是否变化\
+			\ndrowningDamage	玩家是否承受窒息伤害\
+			\nenderPearlsVanishOnDeath	被掷出的末影珍珠是否会在掷出它的玩家死亡后消失\
+			\nfallDamage	玩家是否承受跌落伤害\
+			\nfireDamage	玩家是否承受火焰伤害\
+			\nforgiveDeadPlayers	当被激怒的条件敌对生物的目标玩家死亡时，该生物是否恢复未激怒状态\
+			\nfreezeDamage	玩家是否承受冰冻伤害\
+			\nglobalSoundEvents	玩家是否能听到可无视距离播放给全部玩家的特定游戏事件音效\
+			\nkeepInventory	玩家死亡后是否保留物品栏物品、经验（死亡时物品不掉落、经验不清空）\
+			\nlavaSourceConversion	流动的熔岩是否可产生熔岩源\
+			\nlogAdminCommands	是否在服务器日志中记录管理员使用过的命令\
+			\nmobExplosionDropDecay	由生物源爆炸炸毁的方块是否会有概率不掉落\
+			\nmobGriefing	生物是否能够进行破坏性行为\
+			\nnaturalRegeneration	玩家是否能在饥饿值足够时自然恢复生命值\
+			\nreducedDebugInfo	调试屏幕是否简化而非显示详细信息\
+			\nsendCommandFeedback	玩家执行命令的返回信息是否在聊天框中显示。同时影响命令方块是否保存命令输出文本\
+			\nshowDeathMessages	是否在聊天框中显示玩家的死亡信息\
+			\nspectatorsGenerateChunks	是否允许旁观模式的玩家生成区块\
+			\ntntExplosionDropDecay	由TNT爆炸炸毁的方块是否会有概率不掉落\
+			\nuniversalAnger	被激怒的条件敌对生物是否攻击附近任何玩家\
+			\nwaterSourceConversion	流动的水是否可产生水源");
+		if (ImGui::Button(u8"生成命令"))
+		{
+			std::string statue;
+			std::ostringstream buffer;
+			if (is_enable == 0)
+			{
+				statue = "false";
+			}
+			else {
+				statue = "true";
+			}
+			buffer << "/gamerule " << gamerules[gamerulevaluse] << " " << statue;
+			strcpy_s(command, buffer.str().data());
+		}
 
 	}
-	if (ImGui::CollapsingHeader(u8"�Ѷ�")) {
+	if (ImGui::CollapsingHeader(u8"难度")) {
 
 	}
-	if (ImGui::CollapsingHeader(u8"������")) {
+	if (ImGui::CollapsingHeader(u8"出生点")) {
 
 	}
 	ImGui::Separator();
-	ImGui::Text(u8"���");
-	if (ImGui::CollapsingHeader(u8"����")) {
+	ImGui::Text(u8"玩家");
+	if (ImGui::CollapsingHeader(u8"传送")) {
 
 	}
-	if (ImGui::CollapsingHeader(u8"�ȼ�")) {
+	if (ImGui::CollapsingHeader(u8"等级")) {
 
 	}
 	ImGui::Separator();
-	ImGui::Text(u8"��Ϸ");
-	if (ImGui::CollapsingHeader(u8"ʱ��")) {
+	ImGui::Text(u8"游戏");
+	if (ImGui::CollapsingHeader(u8"时间")) {
 
 	}
-	if (ImGui::CollapsingHeader(u8"����")) {
+	if (ImGui::CollapsingHeader(u8"天气")) {
 
 	}
 	ImGui::End();
 }
 
-// ��Ʒ����
+// 物品给予
 static void ShowGive() {
-	ImGui::Begin(u8"��Ʒ����");
+	ImGui::Begin(u8"物品给予");
 	ImGui::End();
 }
 
 
-// �������
+// 方块放置
 static void ShowSetBlock() {
-	ImGui::Begin(u8"�������");
+	ImGui::Begin(u8"方块放置");
 	ImGui::End();
 }
 
-// ʵ���ٻ�
+// 实体召唤
 static void ShowSummon() {
-	ImGui::Begin(u8"ʵ���ٻ�");
+	ImGui::Begin(u8"实体召唤");
 	ImGui::End();
 }
 
-// �滻��Ʒ/����
+// 替换物品/方块
 static void ShowReplaceitem() {
-	ImGui::Begin(u8"�滻��Ʒ/����");
+	ImGui::Begin(u8"替换物品/方块");
 	ImGui::End();
 }
 
-// �Ʒְ�
+// 计分板
 static void ShowScoreboard() {
-	ImGui::Begin(u8"�Ʒְ�");
+	ImGui::Begin(u8"计分板");
 	ImGui::End();
 }
 
-// ����
+// 队伍
 static void ShowTeam() {
-	ImGui::Begin(u8"����");
+	ImGui::Begin(u8"队伍");
 	ImGui::End();
 }
 
-// ����Ч��
+// 粒子效果
 static void ShowParticle() {
-	ImGui::Begin(u8"����Ч��");
+	ImGui::Begin(u8"粒子效果");
 	ImGui::End();
 }
 
-// ʵ��ִ��
+// 实体执行
 static void ShowExecute() {
-	ImGui::Begin(u8"ʵ��ִ��");
+	ImGui::Begin(u8"实体执行");
 	ImGui::End();
 }
 
-// ʵ����ɢ
+// 实体扩散
 static void ShowSpreadplayers() {
-	ImGui::Begin(u8"ʵ����ɢ");
+	ImGui::Begin(u8"实体扩散");
 	ImGui::End();
 }
 
-// ����߽�
+// 世界边界
 static void ShowWorldborder() {
-	ImGui::Begin(u8"����߽�");
+	ImGui::Begin(u8"世界边界");
 	ImGui::End();
 }
 
-// BOOS��
+// BOOS栏
 static void ShowBossBar() {
-	ImGui::Begin(u8"BOOS��");
+	ImGui::Begin(u8"BOOS栏");
 	ImGui::End();
 }
 
@@ -390,7 +458,20 @@ static void PlayerChoose(const char* label,char* player) {
 	{
 		ImGui::BeginTooltip();
 		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
-		ImGui::TextUnformatted(u8"���ѡ����:\n@a �������\n@s ����ִ����\n@p ��������\n@e ȫ��ʵ��\n@r ������\n@p[c=-1] ������Զ�����");
+		ImGui::TextUnformatted(u8"玩家选择器:\n@a 所有玩家\n@s 命令执行者\n@p 最近的玩家\n@e 全部实体\n@r 随机玩家\n@p[c=-1] 距离最远的玩家");
+		ImGui::PopTextWrapPos();
+		ImGui::EndTooltip();
+	}
+}
+
+static void HelpMarker(const char* desc)
+{
+	ImGui::TextDisabled("(?)");
+	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayShort))
+	{
+		ImGui::BeginTooltip();
+		ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+		ImGui::TextUnformatted(desc);
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}

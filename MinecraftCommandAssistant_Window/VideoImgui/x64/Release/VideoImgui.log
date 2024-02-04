@@ -23,8 +23,8 @@ F:\work\c++\Minecraft-Command-Assistant\MinecraftCommandAssistant_Window\Clipboa
           ]
 F:\work\c++\Minecraft-Command-Assistant\MinecraftCommandAssistant_Window\ClipboardXX\include\detail\windows.hpp(56,39): message : 请参阅 "clipboardxx::ClipboardWindows::WindowsException::get_last_windows_error" 中对 "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string" 的第一个引用
   正在生成代码
-  2 of 2707 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 2708 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    94 functions had inline decision re-evaluated but remain unchanged
+    90 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   VideoImgui.vcxproj -> F:\work\c++\Minecraft-Command-Assistant\MinecraftCommandAssistant_Window\x64\Release\MinecraftCommandAssistant_Window.exe
