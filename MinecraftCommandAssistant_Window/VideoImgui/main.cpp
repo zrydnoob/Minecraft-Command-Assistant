@@ -263,7 +263,7 @@ static void ShowBasicCommands() {
 		ImGui::RadioButton(u8"创造模式", &gamemode, 1); ImGui::SameLine();
 		ImGui::RadioButton(u8"冒险模式", &gamemode, 2); ImGui::SameLine();
 		ImGui::RadioButton(u8"旁观模式", &gamemode, 3); 
-		static char player[128] = ""; PlayerChoose(u8"玩家选择器",player);
+		static char player[1204 * 16] = ""; PlayerChoose(u8"更改游戏模式玩家",player);
 		if (ImGui::Button(u8"生成命令")) {
 			std::string gamemodeCommand;
 			std::ostringstream buffer;
@@ -357,27 +357,140 @@ static void ShowBasicCommands() {
 
 	}
 	if (ImGui::CollapsingHeader(u8"难度")) {
-
+		static int difficulty = 0;
+		ImGui::RadioButton(u8"和平", &difficulty, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"简单", &difficulty, 1); ImGui::SameLine();
+		ImGui::RadioButton(u8"普通", &difficulty, 2); ImGui::SameLine();
+		ImGui::RadioButton(u8"困难", &difficulty, 3);
+		if (ImGui::Button(u8"生成命令"))
+		{
+			std::string difficultyCommand;
+			switch (difficulty)
+			{
+			case 0:
+				difficultyCommand = "peaceful";
+				break;
+			case 1:
+				difficultyCommand = "easy";
+				break;
+			case 2:
+				difficultyCommand = "normal";
+				break;
+			case 3:
+				difficultyCommand = "hard";
+				break;
+			}
+			std::ostringstream buffer;
+			buffer << "/difficulty " << difficultyCommand;
+			strcpy_s(command, buffer.str().data());
+		}
 	}
 	if (ImGui::CollapsingHeader(u8"出生点")) {
-
+		static int x;
+		static int y;
+		static int z;
+		ImGui::InputInt("x", &x);
+		ImGui::InputInt("y", &y);
+		ImGui::InputInt("z", &z); 
+		static char player[1204*16] = ""; PlayerChoose(u8"设置出生点玩家", player);
+		if (ImGui::Button(u8"生成命令")) {
+			std::ostringstream buffer;
+			buffer << "/spawnpoint " << player << " " << x << " " << y << " " << z;
+			strcpy_s(command, buffer.str().data());
+		}
 	}
 	ImGui::Separator();
 	ImGui::Text(u8"玩家");
 	if (ImGui::CollapsingHeader(u8"传送")) {
-
+		if (ImGui::TreeNode(u8"传送到玩家"))
+		{
+			static char p1[1204 * 16] = ""; PlayerChoose(u8"要传送的玩家", p1);
+			static char p2[1204 * 16] = ""; PlayerChoose(u8"传送到的玩家", p2);
+			if (ImGui::Button(u8"生成命令")) {
+				std::ostringstream buffer;
+				buffer << "/tp " << p1 << " " << p2;
+				strcpy_s(command, buffer.str().data());
+			}
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode(u8"传送到坐标"))
+		{
+			static int x;
+			static int y;
+			static int z;
+			ImGui::InputInt("x", &x);
+			ImGui::InputInt("y", &y);
+			ImGui::InputInt("z", &z);
+			static char player[1204 * 16] = ""; PlayerChoose(u8"要传送的玩家##1", player);
+			if (ImGui::Button(u8"生成命令")) {
+				std::ostringstream buffer;
+				buffer << "/tp " << player << " " << x << " " << y << " " << z;
+				strcpy_s(command, buffer.str().data());
+			}
+			ImGui::TreePop();
+		}
 	}
-	if (ImGui::CollapsingHeader(u8"等级")) {
 
+	
+	if (ImGui::CollapsingHeader(u8"等级")) {
+		static int is_leavels = 0;
+		static int value;
+		ImGui::RadioButton(u8"经验", &is_leavels, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"等级##1", &is_leavels, 1);
+		static char player[1204 * 16] = ""; PlayerChoose(u8"增加经验值玩家", player);
+		ImGui::InputInt(u8"值", &value);
+		if (ImGui::Button(u8"生成命令")) {
+			std::ostringstream buffer;
+			if (is_leavels == 0)
+			{
+				buffer << "/xp add " << player << " " << value << " points";
+			}
+			else
+			{
+				buffer << "/xp add " << player << " " << value << " leavels";
+			}
+			strcpy_s(command, buffer.str().data());
+		}
 	}
 	ImGui::Separator();
 	ImGui::Text(u8"游戏");
 	if (ImGui::CollapsingHeader(u8"时间")) {
-
+		static int time;
+		ImGui::InputInt(u8"设置时间 (游戏刻)", &time);
+		if (ImGui::Button(u8"生成命令")) {
+			std::ostringstream buffer;
+			buffer << "/time set " << time;
+			strcpy_s(command, buffer.str().data());
+		}
 	}
 	if (ImGui::CollapsingHeader(u8"天气")) {
-
+		static int weather = 0;
+		static int time = 100;
+		ImGui::RadioButton(u8"晴天", &weather, 0); ImGui::SameLine();
+		ImGui::RadioButton(u8"雨天", &weather, 1); ImGui::SameLine();
+		ImGui::RadioButton(u8"暴雨", &weather, 2);
+		ImGui::InputInt(u8"持续时间", &time);
+		if (ImGui::Button(u8"生成命令")) {
+			std::ostringstream buffer;
+			std::string weatherCommand;
+			switch (weather)
+			{
+			case 0:
+				weatherCommand = "clear";
+				break;
+			case 1:
+				weatherCommand = "rain";
+				break;
+			case 2:
+				weatherCommand = "thunder";
+				break;
+			}
+			buffer << "/weather " << weatherCommand << " " << time;
+			strcpy_s(command, buffer.str().data());
+		}
 	}
+	ImGui::Separator();
+	ImGui::Text(u8"注意：为防止页面过长,请勿展开多个标签页,否则无法生成命令");
 	ImGui::End();
 }
 
