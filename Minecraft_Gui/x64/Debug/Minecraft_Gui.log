@@ -1,0 +1,57 @@
+﻿  dllmain.cpp
+D:\work\Minecraft-Command-Assistant\opengl_imgui\include\imgui_opengl_hook.h(10,47): warning C4229: 使用了记时错误: 忽略数据上的修饰符
+  (编译源文件“/dllmain.cpp”)
+  
+D:\vsiualstudio\IDE\VC\Tools\MSVC\14.39.33519\include\xutility(4537,18): warning C4244: “=”: 从“WCHAR”转换到“char”，可能丢失数据
+  (编译源文件“/dllmain.cpp”)
+  D:\vsiualstudio\IDE\VC\Tools\MSVC\14.39.33519\include\xutility(4537,18):
+  模板实例化上下文(最早的实例化上下文)为
+  	D:\work\Minecraft-Command-Assistant\ClipboardXX\include\detail\windows.hpp(56,39):
+  	查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<LPTSTR,0>(_Iter,_Iter,const _Alloc &)”的引用
+          with
+          [
+              _Iter=LPTSTR,
+              _Alloc=std::allocator<char>
+          ]
+  		D:\work\Minecraft-Command-Assistant\ClipboardXX\include\detail\windows.hpp(56,39):
+  		请参阅 "clipboardxx::ClipboardWindows::WindowsException::get_last_windows_error" 中对 "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string" 的第一个引用
+  	D:\vsiualstudio\IDE\VC\Tools\MSVC\14.39.33519\include\xstring(2600,17):
+  	查看对正在编译的函数 模板 实例化“void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<WCHAR*,WCHAR*,_Size_type>(_Iter,const _Sent,_Size)”的引用
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=WCHAR *,
+              _Sent=WCHAR *,
+              _Size=unsigned __int64
+          ]
+  	D:\vsiualstudio\IDE\VC\Tools\MSVC\14.39.33519\include\xstring(2756,18):
+  	查看对正在编译的函数 模板 实例化“_OutIt *std::_Copy_n_unchecked4<WCHAR*,_Size,char*>(_InIt,_SizeTy,_OutIt)”的引用
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=WCHAR *,
+              _SizeTy=unsigned __int64
+          ]
+  
+opengl_imgui_x64.lib(imgui.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+  opengl_imgui_x64.lib(hook.obj) : 找到 MSIL .netmodule 或使用 /GL 编译的模块；正在使用 /LTCG 重新启动链接；将 /LTCG 添加到链接命令行以改进链接器性能
+opengl_imgui_x64.lib(imgui_draw.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_draw.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_widgets.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_widgets.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_tables.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_tables.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_opengl_hook.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_opengl_hook.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_impl_opengl3.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_impl_opengl3.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_impl_win32.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_impl_win32.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/LTCG”规范)
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  正在生成代码
+  已完成代码的生成
+opengl_imgui_x64.lib(imgui.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_draw.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_draw.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_widgets.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_widgets.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_tables.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_tables.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_opengl_hook.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_opengl_hook.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_impl_opengl3.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_impl_opengl3.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+opengl_imgui_x64.lib(imgui_impl_win32.obj) : warning LNK4099: 未找到 PDB“”(使用“opengl_imgui_x64.lib(imgui_impl_win32.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+  Minecraft_Gui.vcxproj -> D:\work\Minecraft-Command-Assistant\x64\Debug\Minecraft_Gui.dll

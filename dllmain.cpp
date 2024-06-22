@@ -147,7 +147,8 @@ void ren() {
 
 void config(ImGuiIO& io) {
     ImGui::StyleColorsClassic();
-    io.Fonts->AddFontFromFileTTF("F:\\work\\c++\\Minecraft-Command-Assistant\\alibaba.ttf", 18, NULL,io.Fonts->GetGlyphRangesChineseFull());
+	//TODO
+    //io.Fonts->AddFontFromFileTTF("F:\\work\\c++\\Minecraft-Command-Assistant\\alibaba.ttf", 18, NULL,io.Fonts->GetGlyphRangesChineseFull());
 
 	ImGuiStyle& style = ImGui::GetStyle();
 
