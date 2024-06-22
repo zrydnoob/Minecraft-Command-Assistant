@@ -264,7 +264,7 @@ static void ShowBasicCommands() {
 		ImGui::RadioButton(u8"冒险模式", &gamemode, 2); ImGui::SameLine();
 		ImGui::RadioButton(u8"旁观模式", &gamemode, 3); 
 		static char player[1204 * 16] = ""; PlayerChoose(u8"更改游戏模式玩家",player);
-		if (ImGui::Button(u8"生成命令")) {
+		if (ImGui::Button(u8"生成命令##0")) {
 			std::string gamemodeCommand;
 			std::ostringstream buffer;
 			switch (gamemode)
@@ -340,7 +340,7 @@ static void ShowBasicCommands() {
 			\ntntExplosionDropDecay	由TNT爆炸炸毁的方块是否会有概率不掉落\
 			\nuniversalAnger	被激怒的条件敌对生物是否攻击附近任何玩家\
 			\nwaterSourceConversion	流动的水是否可产生水源");
-		if (ImGui::Button(u8"生成命令"))
+		if (ImGui::Button(u8"生成命令##1"))
 		{
 			std::string statue;
 			std::ostringstream buffer;
@@ -362,7 +362,7 @@ static void ShowBasicCommands() {
 		ImGui::RadioButton(u8"简单", &difficulty, 1); ImGui::SameLine();
 		ImGui::RadioButton(u8"普通", &difficulty, 2); ImGui::SameLine();
 		ImGui::RadioButton(u8"困难", &difficulty, 3);
-		if (ImGui::Button(u8"生成命令"))
+		if (ImGui::Button(u8"生成命令##2"))
 		{
 			std::string difficultyCommand;
 			switch (difficulty)
@@ -393,7 +393,7 @@ static void ShowBasicCommands() {
 		ImGui::InputInt("y", &y);
 		ImGui::InputInt("z", &z); 
 		static char player[1204*16] = ""; PlayerChoose(u8"设置出生点玩家", player);
-		if (ImGui::Button(u8"生成命令")) {
+		if (ImGui::Button(u8"生成命令##3")) {
 			std::ostringstream buffer;
 			buffer << "/spawnpoint " << player << " " << x << " " << y << " " << z;
 			strcpy_s(command, buffer.str().data());
@@ -406,7 +406,7 @@ static void ShowBasicCommands() {
 		{
 			static char p1[1204 * 16] = ""; PlayerChoose(u8"要传送的玩家", p1);
 			static char p2[1204 * 16] = ""; PlayerChoose(u8"传送到的玩家", p2);
-			if (ImGui::Button(u8"生成命令")) {
+			if (ImGui::Button(u8"生成命令##4")) {
 				std::ostringstream buffer;
 				buffer << "/tp " << p1 << " " << p2;
 				strcpy_s(command, buffer.str().data());
@@ -422,7 +422,7 @@ static void ShowBasicCommands() {
 			ImGui::InputInt("y", &y);
 			ImGui::InputInt("z", &z);
 			static char player[1204 * 16] = ""; PlayerChoose(u8"要传送的玩家##1", player);
-			if (ImGui::Button(u8"生成命令")) {
+			if (ImGui::Button(u8"生成命令##5")) {
 				std::ostringstream buffer;
 				buffer << "/tp " << player << " " << x << " " << y << " " << z;
 				strcpy_s(command, buffer.str().data());
@@ -439,7 +439,7 @@ static void ShowBasicCommands() {
 		ImGui::RadioButton(u8"等级##1", &is_leavels, 1);
 		static char player[1204 * 16] = ""; PlayerChoose(u8"增加经验值玩家", player);
 		ImGui::InputInt(u8"值", &value);
-		if (ImGui::Button(u8"生成命令")) {
+		if (ImGui::Button(u8"生成命令##6")) {
 			std::ostringstream buffer;
 			if (is_leavels == 0)
 			{
@@ -457,7 +457,7 @@ static void ShowBasicCommands() {
 	if (ImGui::CollapsingHeader(u8"时间")) {
 		static int time;
 		ImGui::InputInt(u8"设置时间 (游戏刻)", &time);
-		if (ImGui::Button(u8"生成命令")) {
+		if (ImGui::Button(u8"生成命令##7")) {
 			std::ostringstream buffer;
 			buffer << "/time set " << time;
 			strcpy_s(command, buffer.str().data());
@@ -470,7 +470,7 @@ static void ShowBasicCommands() {
 		ImGui::RadioButton(u8"雨天", &weather, 1); ImGui::SameLine();
 		ImGui::RadioButton(u8"暴雨", &weather, 2);
 		ImGui::InputInt(u8"持续时间", &time);
-		if (ImGui::Button(u8"生成命令")) {
+		if (ImGui::Button(u8"生成命令##8")) {
 			std::ostringstream buffer;
 			std::string weatherCommand;
 			switch (weather)
@@ -489,8 +489,6 @@ static void ShowBasicCommands() {
 			strcpy_s(command, buffer.str().data());
 		}
 	}
-	ImGui::Separator();
-	ImGui::Text(u8"注意：为防止页面过长,请勿展开多个标签页,否则无法生成命令");
 	ImGui::End();
 }
 
