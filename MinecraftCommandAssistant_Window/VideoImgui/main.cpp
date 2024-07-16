@@ -22,7 +22,7 @@ GLFWwindow* Windows;
 
 
 //提前调用函数声明
-// ===============================================基础命令===============================================
+// ===============================================基础命令==============================================
 #pragma region 基础命令
 static void ShowBasicCommands();
 static void ShowGive();
@@ -117,6 +117,7 @@ int main()
 	
 	// 窗口是否显示布尔判断
 #pragma region WindowBool
+	// 基础命令部分
 	static bool show_basic_commands = false;
 	static bool show_give = false;
 	static bool show_setblock = false;
@@ -129,6 +130,61 @@ int main()
 	static bool show_spreadplayers = false;
 	static bool show_worldborder = false;
 	static bool show_bossbar = false;
+	// json相关部分
+	static bool show_billboards = false;
+	static bool show_commandBook = false;
+	static bool show_chat = false;
+	static bool show_title = false;
+	// 特殊NBT物品/方块
+	static bool show_shuax = false;
+	static bool show_shuad = false;
+	static bool show_yan = false;
+	static bool show_hua = false;
+	static bool show_tou = false;
+	static bool show_dun = false;
+	static bool show_fu = false;
+	static bool show_mo = false;
+	static bool show_lo = false;
+	static bool show_rong = false;
+	static bool show_niang = false;
+	// 复合物品、方块
+	static bool show_ming = false;
+	static bool show_xiang = false;
+	static bool show_pi = false;
+	static bool show_qi = false;
+	static bool show_yao = false;
+	// 特殊NBT实体
+	static bool show_diao = false;
+	static bool show_xia = false;
+	static bool show_qu = false;
+	static bool show_cun = false;
+	static bool show_kui = false;
+	static bool show_jing = false;
+	static bool show_bian = false;
+	static bool show_ji = false;
+	static bool show_tu = false;
+	static bool show_yang = false;
+	static bool show_pa = false;
+	static bool show_huanz = false;
+	static bool show_huany = false;
+	static bool show_e = false;
+	static bool show_mor = false;
+	static bool show_mom = false;
+	static bool show_qianb = false;
+	static bool show_qiand = false;
+	static bool show_mol = false;
+	static bool show_wu = false;
+	static bool show_huan = false;
+	static bool show_dian = false;
+	static bool show_yans = false;
+	// 复合实体
+	static bool show_jian = false;
+	static bool show_shi = false;
+	static bool show_tan = false;
+	static bool show_zuo = false;
+	static bool show_chong = false;
+	static bool show_zhao = false;
+	static bool show_kuang = false;
 #pragma endregion
 
 	while (!glfwWindowShouldClose(Windows))
@@ -147,6 +203,7 @@ int main()
 		ImGui::Begin(u8"我的世界——注入式命令生成器");
 		ImGui::Text(u8"支持游戏版本:1.14.4+");
 
+#pragma region Type
 		if (ImGui::CollapsingHeader(u8"基础功能")) {
 			if (ImGui::BeginTable("chickboxTable1",3))
 			{
@@ -167,27 +224,91 @@ int main()
 		}
 
 		if (ImGui::CollapsingHeader(u8"JSON相关")) {
-
+			if (ImGui::BeginTable("chickboxTable2",3))
+			{
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"告示牌", &show_billboards);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"成书(命令书)", &show_commandBook);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"聊天信息", &show_chat);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"标题", &show_title);
+				ImGui::EndTable();
+			}
 		}
 
 		ImGui::Separator();
 
 		if (ImGui::CollapsingHeader(u8"特殊NBT物品/方块")) {
-
+			if (ImGui::BeginTable("chickboxTable3", 3))
+			{
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"刷怪箱", &show_shuax);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"刷怪蛋", &show_shuad);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"烟花火箭", &show_yan);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"花盆", &show_hua);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"头颅", &show_tou);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"盾牌", &show_dun);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"附魔书", &show_fu);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"末地传送门方块", &show_mo);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"漏斗", &show_lo);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"熔炉", &show_rong);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"酿造台", &show_niang);
+				ImGui::EndTable();
+			}
 		}
 
 		if (ImGui::CollapsingHeader(u8"复合物品/方块")) {
-
+			if (ImGui::BeginTable(u8"chickboxTable4",3))
+			{
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"命令方块", &show_ming);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"箱子", &show_xiang);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"皮革装备", &show_pi);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"旗帜", &show_qi);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"药水", &show_yao);
+				ImGui::EndTable();
+			}
 		}
 
 		ImGui::Separator();
 
 		if (ImGui::CollapsingHeader(u8"特殊NBT实体")) {
-
+			if (ImGui::BeginTable(u8"chickboxTable5", 3)) {
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"掉落的物品", &show_diao);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"下落的方块", &show_xia);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"区域效果云", &show_qu);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"村民", &show_cun);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"盔甲架", &show_kui);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"经验球", &show_jing);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"蝙蝠", &show_bian);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"鸡", &show_ji);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"兔子", &show_tu);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"羊", &show_yang);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"爬行者", &show_pa);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"唤魔者", &show_huanz);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"唤魔者的尖牙", &show_huany);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"恶魂", &show_e);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"末影人", &show_mor);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"末影螨", &show_mom);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"潜影贝", &show_qianb);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"潜影贝的子弹", &show_qiand);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"末影龙", &show_mol);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"物品展示框", &show_wu);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"画", &show_huan);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"点燃的TNT", &show_dian);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"烟花火箭(实体)", &show_yans);
+				ImGui::EndTable();
+			}
 		}
 
 		if (ImGui::CollapsingHeader(u8"复合实体")) {
-
+			if (ImGui::BeginTable(u8"chickboxTable6",3))
+			{
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"僵尸", &show_jian);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"史莱姆", &show_shi);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"弹射物", &show_tan);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"坐骑", &show_zuo);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"宠物", &show_chong);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"召唤物", &show_zhao);
+				ImGui::TableNextColumn(); ImGui::Checkbox(u8"矿车", &show_kuang);
+				ImGui::EndTable();
+			}
 		}
 
 		ImGui::Separator();
@@ -199,6 +320,7 @@ int main()
 			ImGui::BulletText(u8"开发日期 2024/2/2开始");
 		}
 
+#pragma endregion
 		ImGui::End();
 
 		ImGui::Begin(u8"命令行窗口");
