@@ -38,8 +38,8 @@ D:\vsiualstudio\IDE\VC\Tools\MSVC\14.39.33519\include\xutility(4537,18): warning
           ]
   
   正在生成代码
-  1 of 2711 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 2711 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    94 functions had inline decision re-evaluated but remain unchanged
+    90 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   VideoImgui.vcxproj -> D:\work\Minecraft-Command-Assistant\MinecraftCommandAssistant_Window\x64\Release\MinecraftCommandAssistant_Window.exe

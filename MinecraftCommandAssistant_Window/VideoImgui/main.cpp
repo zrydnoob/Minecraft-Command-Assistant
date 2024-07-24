@@ -678,6 +678,106 @@ static void ShowWorldborder() {
 // BOOS栏
 static void ShowBossBar() {
 	ImGui::Begin(u8"BOOS栏");
+	if (ImGui::CollapsingHeader(u8"创建BOOS栏")) {
+		static char id[1204 * 16] = "";
+		static char name[1204 * 16] = "";
+		ImGui::InputText(u8"内部id##0", id, 1024, 0);
+		ImGui::InputText(u8"显示名称##0", name, 1024, 0);
+		if (ImGui::Button(u8"生成命令##0")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar add " << id << " {\"text\":\"" << name << "\"}";
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+
+	if (ImGui::CollapsingHeader(u8"为指定玩家显示BOSS栏")) {
+		static char id[1204 * 16] = ""; ImGui::InputText(u8"内部id##1", id, 1024, 0);
+		static char player[1204 * 16] = ""; PlayerChoose(u8"目标玩家##0", player);
+		if (ImGui::Button(u8"生成命令##1")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar set " << id << " players " << player;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+
+	if (ImGui::CollapsingHeader(u8"删除BOSS栏")) {
+		static char id[1204 * 16] = ""; ImGui::InputText(u8"内部id##2", id, 1024, 0);
+		if (ImGui::Button(u8"生成命令##2")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar remove " << id;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+	
+	if (ImGui::CollapsingHeader(u8"修改BOSS栏血量")) {
+		static char id[1204 * 16] = ""; ImGui::InputText(u8"内部id##3", id, 1024, 0);
+		static int value; ImGui::InputInt(u8"值##0", &value);
+		if (ImGui::Button(u8"生成命令##3")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar set " << id << " value " << value;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+
+	if (ImGui::CollapsingHeader(u8"设置BOSS栏最大血量")) {
+		static char id[1204 * 16] = ""; ImGui::InputText(u8"内部id##4", id, 1024, 0);
+		static int value; ImGui::InputInt(u8"值##1", &value);
+		if (ImGui::Button(u8"生成命令##4")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar set " << id << " max " << value;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+
+	if (ImGui::CollapsingHeader(u8"重命名BOOS栏")) {
+		static char id[1204 * 16] = "";
+		static char name[1204 * 16] = "";
+		ImGui::InputText(u8"内部id##5", id, 1024, 0);
+		ImGui::InputText(u8"显示名称##1", name, 1024, 0);
+		if (ImGui::Button(u8"生成命令##5")) {
+			std::ostringstream buffer;
+			buffer << "/bossbar set " << id << " name {\"text\":\"" << name << "\"}";
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+
+	if (ImGui::CollapsingHeader(u8"更改BOOS栏血条分段")) {
+		static char id[1204 * 16] = "";
+		ImGui::InputText(u8"内部id##6", id, 1024, 0);
+		static int value;
+		const char* modes[] = { u8"不分段", u8"分6端", u8"分10端" , u8"分12端" , u8"分20端" };
+		std::string style;
+		ImGui::Combo(u8"分段", &value, modes, IM_ARRAYSIZE(modes));
+		
+		if (ImGui::Button(u8"生成命令##6"))
+		{
+			switch (value)
+			{
+			case 0:
+				style = "progress";
+				break;
+			case 1:
+				style = "notched_6";
+				break;
+			case 2:
+				style = "notched_10";
+				break;
+			case 3:
+				style = "notched_12";
+				break;
+			case 4:
+				style = "notched_20";
+				break;
+			}
+			std::ostringstream buffer;
+			buffer << "/bossbar set " << id << " style " << style;
+			strcpy_s(command, buffer.str().data());
+		}
+	}
+	if (ImGui::CollapsingHeader(u8"显示所有BOOS栏")) {
+		ImGui::Text(u8"/bossbar list");
+	}
+
 	ImGui::End();
 }
 
