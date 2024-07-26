@@ -10,7 +10,7 @@
 
 ## 安装
 想要在游戏中使用它:
-1. 下载Releases中的.dll文件
+1. 自行构建.dll文件
 2. 运行Minecraft游戏
 3. 使用dll的注入器将下载的文件注入到Minecraft的游戏进程中
 4. 在游戏中按下键盘上的Insert键打开菜单
