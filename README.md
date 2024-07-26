@@ -12,7 +12,7 @@
 想要在游戏中使用它:
 1. 自行构建.dll文件
 2. 运行Minecraft游戏
-3. 使用dll的注入器将下载的文件注入到Minecraft的游戏进程中
+3. 使用dll的注入器将构建后的文件注入到Minecraft的游戏进程中
 4. 在游戏中按下键盘上的Insert键打开菜单
 
 注意:本项目仅供学习使用，不提供任何注入器，请勿用于其他用途
@@ -33,7 +33,8 @@
 1. 请下载[Visual Studio](https://visualstudio.microsoft.com/zh-hans/vs/)
 2. 在安装器中选择社区版Visual Studio 2022
 3. 在弹出的页面选择 使用C++的桌面开发
-4. 打开项目 生成即可
+4. 打开项目 导入所需的依赖项
+5. 生成dll
 
 ## 使用
 注入版使用C++语言 Opengl ImGui进行开发
