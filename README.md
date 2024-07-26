@@ -1,39 +1,33 @@
 # Minecraft-Command-Assistant
-## ±³¾°
-ÔÚÎÒ·¢ÏÖOpenGL ImGui´ò°üÎª¶¯Ì¬Á´½Ó¿â±»×¢Èëµ½MinecraftÖÐ,²¢ÇÒ¿ÉÒÔÔÚMinecraftÖÐÏÔÊ¾ImGui½çÃæºó,ÎÒ¼Æ»®ÖÆ×÷Ò»¸öÃüÁîÖúÊÖ×¢Èëµ½ÓÎÏ·ÖÐ·½±ãÎÒµÄÓÎÏ·
+## èƒŒæ™¯
+åœ¨æˆ‘å‘çŽ°OpenGL ImGuiæ‰“åŒ…ä¸ºåŠ¨æ€é“¾æŽ¥åº“è¢«æ³¨å…¥åˆ°Minecraftä¸­,å¹¶ä¸”å¯ä»¥åœ¨Minecraftä¸­æ˜¾ç¤ºImGuiç•Œé¢åŽ,æˆ‘è®¡åˆ’åˆ¶ä½œä¸€ä¸ªå‘½ä»¤åŠ©æ‰‹æ³¨å…¥åˆ°æ¸¸æˆä¸­æ–¹ä¾¿æˆ‘çš„æ¸¸æˆ
 
-## Ö§³ÖµÄÓÎÏ·°æ±¾
-Ä¿Ç°ÔÚ1.14+
+## æ”¯æŒçš„æ¸¸æˆç‰ˆæœ¬
+ç›®å‰åœ¨1.14+
 
-## °²×°
-ÏëÒªÔÚÓÎÏ·ÖÐÊ¹ÓÃËü:
-1. ÏÂÔØReleasesÖÐµÄ.dllÎÄ¼þ
-2. ÔËÐÐMinecraftÓÎÏ·
-3. Ê¹ÓÃdllµÄ×¢ÈëÆ÷½«ÏÂÔØµÄÎÄ¼þ×¢Èëµ½MinecraftµÄÓÎÏ·½ø³ÌÖÐ
-4. ÔÚÓÎÏ·ÖÐ°´ÏÂ¼üÅÌÉÏµÄInsert¼ü´ò¿ª²Ëµ¥
+## è¿è¡Œ
+æ­¤developåˆ†æ”¯ä¸ºå¤–ç½®å‘½ä»¤ç”Ÿæˆå·¥å…·ï¼Œå¾…å¼€å‘å®ŒæˆåŽä¼šå‘å¸ƒï¼Œå¯ç›´æŽ¥ä¸‹è½½ä½¿ç”¨ã€‚
 
-×¢Òâ:±¾ÏîÄ¿½ö¹©Ñ§Ï°Ê¹ÓÃ£¬²»Ìá¹©ÈÎºÎ×¢ÈëÆ÷£¬ÇëÎðÓÃÓÚÆäËûÓÃÍ¾
+## æ³¨æ„äº‹é¡¹
+åˆ†æ”¯mainæ˜¯æ³¨å…¥ç‰ˆæœ¬æºç 
 
-## ×¢ÒâÊÂÏî
-·ÖÖ§mainÊÇ×¢Èë°æ±¾Ô´Âë
+åˆ†æ”¯developæ˜¯å¼€å‘è°ƒè¯•çš„çª—å£ç‰ˆæœ¬
 
-·ÖÖ§developÊÇ¿ª·¢µ÷ÊÔµÄ´°¿Ú°æ±¾
+åœ¨æž„å»ºè¿‡ç¨‹ä¸­è¯·æ³¨æ„æ‰€ä¸‹è½½çš„åˆ†æ”¯
 
-ÔÚ¹¹½¨¹ý³ÌÖÐÇë×¢ÒâËùÏÂÔØµÄ·ÖÖ§
+#### ä»ŠåŽå¼€å‘è¿‡ç¨‹ä¸­æˆ‘å°†å…ˆä½¿ç”¨developåˆ†æ”¯å¼€å‘,å¾…åŸºç¡€åŠŸèƒ½å®ŒæˆåŽç§»æ¤åˆ°æ³¨å…¥ç‰ˆä¸­
+#### æœ¬é¡¹ç›®çš„å¼€å‘è¿˜æœªå®Œæˆ
 
-#### ½ñºó¿ª·¢¹ý³ÌÖÐÎÒ½«ÏÈÊ¹ÓÃdevelop·ÖÖ§¿ª·¢,´ý»ù´¡¹¦ÄÜÍê³ÉºóÒÆÖ²µ½×¢Èë°æÖÐ
-#### ±¾ÏîÄ¿µÄ¿ª·¢»¹Î´Íê³É
+## æž„å»º
+æƒ³è¦è‡ªå·±æž„å»ºå¹¶ç”Ÿæˆdllæ–‡ä»¶
+1. è¯·ä¸‹è½½[Visual Studio](https://visualstudio.microsoft.com/zh-hans/vs/)
+2. åœ¨å®‰è£…å™¨ä¸­é€‰æ‹©ç¤¾åŒºç‰ˆVisual Studio 2022
+3. åœ¨å¼¹å‡ºçš„é¡µé¢é€‰æ‹© ä½¿ç”¨C++çš„æ¡Œé¢å¼€å‘
+4. æ‰“å¼€é¡¹ç›® ç”Ÿæˆå³å¯
 
-## ¹¹½¨
-ÏëÒª×Ô¼º¹¹½¨²¢Éú³ÉdllÎÄ¼þ
-1. ÇëÏÂÔØ[Visual Studio](https://visualstudio.microsoft.com/zh-hans/vs/)
-2. ÔÚ°²×°Æ÷ÖÐÑ¡ÔñÉçÇø°æVisual Studio 2022
-3. ÔÚµ¯³öµÄÒ³ÃæÑ¡Ôñ Ê¹ÓÃC++µÄ×ÀÃæ¿ª·¢
-4. ´ò¿ªÏîÄ¿ Éú³É¼´¿É
+## ä½¿ç”¨
+æ³¨å…¥ç‰ˆä½¿ç”¨C++è¯­è¨€ Opengl ImGuiè¿›è¡Œå¼€å‘
 
-## Ê¹ÓÃ
-×¢Èë°æÊ¹ÓÃC++ÓïÑÔ Opengl ImGui½øÐÐ¿ª·¢
+å¸¦çª—å£çš„ç‰ˆæœ¬æ˜¯ä¸ºäº†æ–¹ä¾¿å¼€å‘è°ƒè¯•ï¼Œä½¿ç”¨äº†ImGui glew glfw
 
-´ø´°¿ÚµÄ°æ±¾ÊÇÎªÁË·½±ã¿ª·¢µ÷ÊÔ£¬Ê¹ÓÃÁËImGui glew glfw
-
-±¾ÏîÄ¿µÄ¹¦ÄÜºÍ²¼¾ÖÕÕ°áÁË MCÄ£×é°Ù¿ÆµÄ[ÃüÁîÉú³ÉÆ÷](https://www.mcmod.cn/tools/cbcreator/)
+æœ¬é¡¹ç›®çš„åŠŸèƒ½å’Œå¸ƒå±€ç…§æ¬äº† MC æ¨¡ç»„ç™¾ç§‘çš„[å‘½ä»¤ç”Ÿæˆå™¨](https://www.mcmod.cn/tools/cbcreator/)
